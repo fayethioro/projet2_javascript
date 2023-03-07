@@ -1,4 +1,4 @@
-let array = ["Mon premier", "Mon deuxieme" , "Mon troixieme", "Mon quatrieme"];
+
 
 let gauche = document.querySelector(".box_gauche");
 let droite = document.querySelector(".box_droite");
@@ -19,7 +19,6 @@ function desactive()
    if (!gauche.hasChildNodes())
    {
       btg.disabled = true;
-     
    }
    else
    {
@@ -27,37 +26,52 @@ function desactive()
    }
 }
 
-for (let i = 0; i < array.length; i++)
+setInterval(desactive,100);
+
+function active (paragraph) 
 {
-   let  paragraph = document.createElement("p");
-   paragraph.innerHTML = array[i];
-   gauche.appendChild(paragraph);
-   paragraph.classList.add("para");
-   
-   paragraph.addEventListener("mouseover", function()
-   {
-      let p=document.getElementsByClassName("para");
-      for (let j = 0; j < p.length; j++) 
+      paragraph.addEventListener("mouseover", function()
       {
-        p[j].classList.remove("active");
-      }
-      paragraph.classList.add("active");
-   })
+         let p=document.getElementsByClassName("para");
+         for (let j = 0; j < p.length; j++) 
+         {
+         p[j].classList.remove("active");
+         }
+         paragraph.classList.add("active");
+      })
+   
 }
 
-btg.addEventListener('click', function()
+function generer() 
+{
+   let array = ["Mon premier", "Mon deuxieme" , "Mon troixieme", "Mon quatrieme"];
+
+   for (let i = 0; i < array.length; i++)
+   {
+      let  paragraph = document.createElement("p");
+      paragraph.innerHTML = array[i];
+      gauche.appendChild(paragraph);
+      paragraph.classList.add("para");
+      active(paragraph);
+      
+   } 
+}
+generer() ;
+
+function move(selector , side) 
+{
+   selector.addEventListener('click', function()
  {
    let select=document.querySelector(".active");
-   droite.appendChild(select);
+   side.appendChild(select);
    desactive();
 })
+}
 
-btd.addEventListener('click', function() 
-{
-   let select=document.querySelector(".active");
-   gauche.appendChild(select);
-   desactive();
-})
+move(btg, droite);
+move(btd, gauche);
+
+
 
 desactive();
 
