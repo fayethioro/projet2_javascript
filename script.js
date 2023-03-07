@@ -2,13 +2,14 @@
 
 let gauche = document.querySelector(".box_gauche");
 let droite = document.querySelector(".box_droite");
-let btg=document.querySelector("#gauche");
-let btd=document.querySelector("#droite");
+
+let btg=document.querySelector("#gauche");//bouton gauche
+let btd=document.querySelector("#droite");//bouton droite
 
 
 function desactive()
 {
-   if (!droite.hasChildNodes()) 
+   if (!droite.hasChildNodes()) //si le box droite est vide on desactive le bouton droite <<
    {
       btd.disabled = true;
    }
@@ -16,7 +17,7 @@ function desactive()
    {
       btd.disabled = false;
    }
-   if (!gauche.hasChildNodes())
+   if (!gauche.hasChildNodes())//si le box gauche est vide on desactive le bouton gauche >>
    {
       btg.disabled = true;
    }
@@ -25,6 +26,8 @@ function desactive()
       btg.disabled = false;
    }
 }
+
+
 
 setInterval(desactive,100);
 
@@ -35,7 +38,7 @@ function active (paragraph)
          let p=document.getElementsByClassName("para");
          for (let j = 0; j < p.length; j++) 
          {
-         p[j].classList.remove("active");
+            p[j].classList.remove("active");
          }
          paragraph.classList.add("active");
       })
