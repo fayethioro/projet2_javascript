@@ -60,12 +60,12 @@ generer() ;
 
 function move(selector , side) 
 {
-   selector.addEventListener('click', function()
- {
-   let select=document.querySelector(".active");
-   side.appendChild(select);
-   desactive();
-})
+      selector.addEventListener('click', function()
+   {
+      let select=document.querySelector(".active");
+      side.appendChild(select);
+      desactive();
+   })
 }
 
 move(btg, droite);
@@ -73,5 +73,5 @@ move(btd, gauche);
 
 
 
-desactive();
+// desactive();
 
